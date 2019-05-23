@@ -4,10 +4,7 @@ var controller = {
 
         get() {
             store.loading();
-            bulletTrain.init({
-                environmentID: Project.bulletTrain,
-                onChange: controller.loaded
-            });
+
         },
         loaded(oldFlags) { //Occurs whenever flags are changed
             if (!oldFlags) {
@@ -32,6 +29,11 @@ store.dispatcherIndex = Dispatcher.register(store, function (payload) {
             break;
     }
 })
+
+bulletTrain.init({
+    environmentID: Project.bulletTrain,
+    onChange: controller.loaded
+});
 
 controller.store = store;
 module.exports = controller.store;
